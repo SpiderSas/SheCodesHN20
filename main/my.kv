@@ -15,7 +15,7 @@
                 text: "Dang ki tai khoan moi"
                 size_hint: 0.8, 0.2
                 pos_hint: {"x":0.1, "top":1}
-                font_size: (root.width**2 + root.height**2) / 14**4
+                font_size: (root.width**2 + root.height**2) / 12**4
 
             Label:
                 size_hint: 0.5,0.12
@@ -85,22 +85,28 @@
     FloatLayout:
 
         Label:
+            text: "Chao mung den voi Ancora!"
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":0.1, "top":1}
+            font_size: (root.width**2 + root.height**2) / 12**4
+
+        Label:
             text:"Email: "
             font_size: (root.width**2 + root.height**2) / 13**4
-            pos_hint: {"x":0.1, "top":0.9}
+            pos_hint: {"x":0.1, "top":0.8}
             size_hint: 0.35, 0.15
 
         TextInput:
             id: email
             font_size: (root.width**2 + root.height**2) / 13**4
             multiline: False
-            pos_hint: {"x": 0.45 , "top":0.9}
+            pos_hint: {"x": 0.45 , "top":0.8}
             size_hint: 0.4, 0.15
 
         Label:
             text:"Mat khau: "
             font_size: (root.width**2 + root.height**2) / 13**4
-            pos_hint: {"x":0.1, "top":0.7}
+            pos_hint: {"x":0.1, "top":0.6}
             size_hint: 0.35, 0.15
 
         TextInput:
@@ -108,7 +114,7 @@
             font_size: (root.width**2 + root.height**2) / 13**4
             multiline: False
             password: True
-            pos_hint: {"x": 0.45, "top":0.7}
+            pos_hint: {"x": 0.45, "top":0.6}
             size_hint: 0.4, 0.15
 
         Button:
