@@ -1,3 +1,5 @@
+# Demo ver only
+
 <CreateAccountWindow>:
     name: "create"
 
@@ -147,39 +149,132 @@
             text : " "
         Label :
             text : " "
+        Button:
+            pos_hint:{"x":0.2, "y": 0.1}
+            size_hint:0.6,0.2
+            text: "Dang xuat"
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "down"
         GridLayout:
             cols : 5
             Button:
                 background_normal : 'home.jpg'
                 on_release:
-                    app.root.current = "second"
+                    app.root.current = "main"
 
             Button:
                 background_normal : 'report.jpg'
                 on_release:
-                    app.root.current = "second"
+                    app.root.current = "report"
 
             Button:
                 background_normal : 'person.jpg'
                 on_release:
-                    app.root.current = "second"
+                    app.root.current = "profile"
 
             Button:
                 background_normal : 'notifications.jpg'
                 on_release:
-                    app.root.current = "second"
+                    app.root.current = "notifications"
             Button:
                 background_normal : 'events.jpg'
                 on_release:
-                    app.root.current = "second"
+                    app.root.current = "events"
 
-
-
-
-<SecondWindow>:
-    name: "second"
+<EventsWindow>:
+    name: "events"
+    Label :
+        text : "Events"
     Button:
         text: "Go Back"
         on_release:
             app.root.current = "main"
             root.manager.transition.direction = "right"
+
+<ProfileWindow>:
+    name: "profile"
+    Label :
+        text : "Profile"
+    Button:
+        text: "Go Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+
+<NotificationsWindow>:
+    name: "notifications"
+    Label :
+        text : "Notifications"
+    Button:
+        text: "Go Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+
+<P>:
+    Label:
+        text: "Ban da submit, cam on ban da chia se"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top":1}
+<Button>:
+    font_side : 100
+    size_hint : 0.8, 0.2
+WindowManager:
+    ReportWindow:
+    WatchWindow:
+
+<ReportWindow>:
+    name: "report"
+    dia_chi : dia_chi
+    su_viec : su_viec
+
+    GridLayout:
+        cols:1
+
+        GridLayout:
+            cols: 2
+
+            Label:
+                text: "Dia chi: "
+
+            TextInput:
+                id: dia_chi
+                multiline: False
+            Label:
+                text: "Su viec: "
+
+            TextInput:
+                id: su_viec
+                multiline: False
+
+        Button:
+            text: "Gui"
+            on_release:
+                root.btn()
+        Button:
+            text : "Xem bang tin"
+            on_release:
+                app.root.current = "watch"
+        Button:
+            text: "Ve trang chu"
+            on_release:
+                app.root.current = "main"
+
+
+<WatchWindow>:
+    name : "watch"
+    text : text
+    GridLayout:
+        cols : 2
+        GridLayout:
+            cols : 1
+            Label:
+                id : text
+                text : root.texting()
+
+    Button:
+        size_hint : 0.1, 0.2
+        text: "Back"
+        on_release:
+            app.root.current = "report"
