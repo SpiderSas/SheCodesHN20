@@ -1,3 +1,5 @@
+# Demo ver only
+
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -5,6 +7,7 @@ from kivy.properties import ObjectProperty
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from database import DataBase
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import Image
 
 
@@ -58,11 +61,64 @@ class LoginWindow(Screen):
         self.password.text = ""
 
 
-class MainWindow(Screen):
+class P(FloatLayout):
     pass
 
 
-class SecondWindow(Screen):
+class B(FloatLayout):
+    pass
+
+
+def show_popup():
+    show = P()
+
+    popupWindow = Popup(title="Popup Window", content=show, size_hint=(None,None),size=(400,400))
+
+    popupWindow.open()
+
+
+class ReportWindow(Screen):
+    dia_chi = ObjectProperty(None)
+    su_viec = ObjectProperty(None)
+    str = " "
+
+    def btn(self):
+        show_popup()
+        self.str = self.dia_chi.text + " " + ":" + " " + self.su_viec.text
+        file = open("dtbase.txt", "a")
+        file.write(self.str + "\n")
+        file.close()
+        self.dia_chi.text = " "
+        self.su_viec.text = " "
+
+
+class WatchWindow(Screen):
+    text = Label()
+
+    def Xem(self):
+        show_popup()
+
+    def texting(self):
+        file = open("dtbase.txt", "r")
+        self.text = file.read()
+        return self.text
+
+
+class MainWindow(Screen):
+    def logOut(self):
+        sm.current = "login"
+    pass
+
+
+class EventsWindow(Screen):
+    pass
+
+
+class ProfileWindow(Screen):
+    pass
+
+
+class NotificationsWindow(Screen):
     pass
 
 
@@ -90,7 +146,7 @@ kv = Builder.load_file("my.kv")
 sm = WindowManager()
 db = DataBase("users.txt")
 
-screens = [LoginWindow(name="login"), CreateAccountWindow(name="create"), MainWindow(name="main")]
+screens = [LoginWindow(name="login"), CreateAccountWindow(name="create"), MainWindow(name="main"), EventsWindow(name="events"), ProfileWindow(name="profile"), NotificationsWindow(name="notifications"), ReportWindow(name="report"), WatchWindow(name="watch")]
 for screen in screens:
     sm.add_widget(screen)
 
