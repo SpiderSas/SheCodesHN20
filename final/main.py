@@ -18,23 +18,23 @@ class CreateAccountWindow(Screen):
     dateofbirth = ObjectProperty(None)
 
     def submit(self):
-        if self.namee.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0:
-            if self.password != "":
+        if self.namee.text != "" and self.email.text != "" and self.email.text.count("@") == 1 and self.email.text.count(".") > 0:  # Validate name & email input
+            if self.password != "":  # Validate password input
                 db.add_user(self.email.text, self.password.text, self.namee.text)
 
                 self.reset()
 
-                sm.current = "login"
+                sm.current = "login"  # Return to login page
             else:
-                invalidForm()
+                invalidForm()  # Output message when input is not eligible
         else:
-            invalidForm()
+            invalidForm()  # Output message when input is not eligible
 
     def login(self):
         self.reset()
-        sm.current = "login"
+        sm.current = "login"  # Return to login page
 
-    def reset(self):
+    def reset(self):  # Reset input spaec
         self.email.text = ""
         self.password.text = ""
         self.namee.text = ""
@@ -48,9 +48,9 @@ class LoginWindow(Screen):
         if db.validate(self.email.text, self.password.text):
             MainWindow.current = self.email.text
             self.reset()
-            sm.current = "main"
+            sm.current = "main"  # Go to main menu
         else:
-            invalidLogin()
+            invalidLogin()  # Invalid input or info not found
 
     def createBtn(self):
         self.reset()
@@ -122,7 +122,7 @@ class NotificationsWindow(Screen):
     pass
 
 
-class WindowManager(ScreenManager):
+class WindowManager(ScreenManager):  # Transition between windows
     pass
 
 
@@ -146,7 +146,7 @@ kv = Builder.load_file("my.kv")
 sm = WindowManager()
 db = DataBase("users.txt")
 
-screens = [LoginWindow(name="login"), CreateAccountWindow(name="create"), MainWindow(name="main"), EventsWindow(name="events"), ProfileWindow(name="profile"), NotificationsWindow(name="notifications"), ReportWindow(name="report"), WatchWindow(name="watch")]
+screens = [LoginWindow(name="login"), CreateAccountWindow(name="create"), MainWindow(name="main"), EventsWindow(name="events"), ProfileWindow(name="profile"), NotificationsWindow(name="notifications"), ReportWindow(name="report"), WatchWindow(name="watch")]  # Different windows
 for screen in screens:
     sm.add_widget(screen)
 
