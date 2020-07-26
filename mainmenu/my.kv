@@ -1,0 +1,51 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+
+<MainWindow>:
+    name: "main"
+
+    GridLayout:
+        cols: 1
+        Label :
+            text : "trangchu"
+        Label :
+            text : " "
+        Label :
+            text : " "
+        GridLayout:
+            cols : 5
+            Button:
+                background_normal : 'home.jpg'
+                on_release:
+                    app.root.current = "second"
+
+            Button:
+                background_normal : 'report.jpg'
+                on_release:
+                    app.root.current = "second"
+
+            Button:
+                background_normal : 'person.jpg'
+                on_release:
+                    app.root.current = "second"
+
+            Button:
+                background_normal : 'notifications.jpg'
+                on_release:
+                    app.root.current = "second"
+            Button:
+                background_normal : 'events.jpg'
+                on_release:
+                    app.root.current = "second"
+
+
+
+
+<SecondWindow>:
+    name: "second"
+    Button:
+        text: "Go Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
