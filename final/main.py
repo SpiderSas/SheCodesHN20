@@ -34,7 +34,7 @@ class CreateAccountWindow(Screen):
         self.reset()
         sm.current = "login"  # Return to login page
 
-    def reset(self):  # Reset input spaec
+    def reset(self):  # Reset input spaces
         self.email.text = ""
         self.password.text = ""
         self.namee.text = ""
@@ -56,7 +56,7 @@ class LoginWindow(Screen):
         self.reset()
         sm.current = "create"
 
-    def reset(self):
+    def reset(self):  # Reset input spaces
         self.email.text = ""
         self.password.text = ""
 
@@ -92,7 +92,7 @@ class ReportWindow(Screen):
         self.su_viec.text = " "
 
 
-class WatchWindow(Screen):
+class WatchWindow(Screen):  # Temporary alternative for map
     text = Label()
 
     def Xem(self):
